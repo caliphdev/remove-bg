@@ -10,9 +10,13 @@
     <link rel="stylesheet" href="/css/style.css"> 
      <link rel="stylesheet" href="/css/alert.css">
     <style>
+.preview-container {
+  text-align: center;
+}
+
 .preview-image {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 400px;
+  max-height: 400px;
   object-fit: contain;
 }
 </style>
@@ -42,7 +46,7 @@
                         <div class="mb-4">
                             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Remove Background</button>
                         </div>
-                        <div class="mb-4">
+                        <div class="mb-4 preview-container">
                     <img src="" alt="Preview Image" style="display: none;" class="preview-image" id="preview">
                         </div>
                     </form>
