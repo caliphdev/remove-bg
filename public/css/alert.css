@@ -1,3 +1,14 @@
+/* Gaya untuk elemen alert dengan background biru */
+.bg-blue-100 {
+  background-color: #BFDBFE; /* warna latar belakang */
+}
+.border-blue-500 {
+  border-color: #1E90FF; /* warna border sebelah kiri */
+}
+.text-blue-700 {
+  color: #1E4E8C; /* warna teks */
+}
+
 /* Gaya untuk elemen alert dengan background hijau */
 .bg-green-100 {
   background-color: #D1FAE5; /* warna latar belakang */
