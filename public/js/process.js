@@ -16,7 +16,7 @@
                         if(result.error) {
                             $(".infoku").html('<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert"><p>' + result.error + '</p></div>');
                         } else {
-                            $("#result").html('<hr><div class="mb-4"><img src="' + result.image + '" alt="Processed Image" class="max-w-full"><br><a href="' + result.image + '" download><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Download Image</button></a></div><div class="mb-4"><button onClick="location.reload()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Try another photos</button></div>');
+                            $("#result").html('<hr><div class="mb-4"><img src="' + result.image + '" alt="Processed Image" class="max-w-full"><br><a href="' + result.image + '" download><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Download Image ( '+ result.size +' )</button></a></div><div class="mb-4"><button onClick="location.reload()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Try another photos</button></div>');
 // Success info
                             $(".infoku").html('<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert"><p>Success, your image has been processed.</p></div>');
                         }
