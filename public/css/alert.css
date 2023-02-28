@@ -1,0 +1,29 @@
+/* Gaya untuk elemen alert dengan background hijau */
+.bg-green-100 {
+  background-color: #D1FAE5; /* warna latar belakang */
+}
+.border-green-500 {
+  border-color: #34D399; /* warna border sebelah kiri */
+}
+.text-green-700 {
+  color: #065F46; /* warna teks */
+}
+
+/* Gaya untuk elemen alert dengan background merah */
+.bg-red-100 {
+  background-color: #FEE2E2; /* warna latar belakang */
+}
+.border-red-500 {
+  border-color: #EF4444; /* warna border sebelah kiri */
+}
+.text-red-700 {
+  color: #991B1B; /* warna teks */
+}
+
+/* Gaya umum untuk elemen alert */
+.infoku .p-4 {
+  padding: 1rem; /* padding pada keempat sisi elemen */
+}
+.infoku .mb-4 {
+  margin-bottom: 1rem; /* margin-bottom pada elemen */
+}
