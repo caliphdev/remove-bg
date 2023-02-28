@@ -15,6 +15,21 @@ if (!fs.existsSync(path.join(__dirname, 'temporary'))) {
     fs.mkdirSync(path.join(__dirname, 'temporary'));
 }
 
+// bytesFormatter
+function bytesFormatter(bytes, decimals = 2) {
+  if (bytes === 0) {
+    return '0 Bytes';
+  }
+
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
+
+
 // Express
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -51,7 +66,8 @@ app.post("/api/process/nobg", upload.single('image'), async (req, res) => {
         fileid = crypto.randomBytes(16).toString('hex') + path.extname(req.file.originalname);
             dts = "./temporary/"+fileid;
             await fs.promises.writeFile(dts, processImages);
-            res.json({ image: "/files/"+ fileid });
+            size = bytesFormatter(processImages.length);
+            res.json({ image: "/files/"+ fileid, size });
         } catch (error) {
             res.json({ error: "Unknown Error, Please Try Again" });
             fs.unlinkSync(req.file.path);
