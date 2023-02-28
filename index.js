@@ -9,10 +9,12 @@ const crypto = require('crypto');
 const fs = require('fs');
 const { processImage } = require('./lib/process');
 const { exec } = require('child_process');
+const tempFolderPath = path.join(__dirname, 'temporary');
+const cron = require('node-cron');
 
-if (!fs.existsSync(path.join(__dirname, 'temporary'))) {
+if (!fs.existsSync(tempFolderPath)) {
     console.log('Creating Temporary Folder...');
-    fs.mkdirSync(path.join(__dirname, 'temporary'));
+    fs.mkdirSync(tempFolderPath);
 }
 
 // bytesFormatter
@@ -35,12 +37,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use("/files", express.static(path.join(__dirname, 'temporary')));
+app.use("/files", express.static(tempFolderPath));
 app.set('views', path.join(__dirname, 'views'));
 
 // Multer ( File Upload )
 const storage = multer.diskStorage({
-    destination: path.join(__dirname, 'temporary'),
+    destination: tempFolderPath,
     filename: function (req, file, cb) {
         cb(null, crypto.randomBytes(16).toString('hex') + path.extname(file.originalname));
     }
@@ -64,7 +66,7 @@ app.post("/api/process/nobg", upload.single('image'), async (req, res) => {
         try {
             processImages = await processImage(req.file.path);
         fileid = crypto.randomBytes(16).toString('hex') + path.extname(req.file.originalname);
-            dts = "./temporary/"+fileid;
+            dts = tempFolderPath + "/" + fileid;
             await fs.promises.writeFile(dts, processImages);
             size = bytesFormatter(processImages.length);
             res.json({ image: "/files/"+ fileid, size });
@@ -85,4 +87,19 @@ app.use((req, res) => res.status(404).render("404"));
 // Start Server
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server Started on Port ' + (process.env.PORT || 3000));
+});
+
+cron.schedule('*/5 * * * *', () => {
+  // Reading the contents of the temporary folder
+  fs.readdir(tempFolderPath, (err, files) => {
+    if (err) {
+      console.log(err);
+    } else {
+      // Deleting all files in the temporary folder
+      files.forEach((file) => {
+        fs.unlinkSync(`${tempFolderPath}/${file}`);
+      });
+      console.log(`All files in the temporary folder have been deleted on ${new Date()}`);
+    }
+  });
 });
