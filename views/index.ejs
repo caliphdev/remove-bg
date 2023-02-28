@@ -8,7 +8,14 @@
     <meta content="<%= locals.site.description %>" name="description" />
     <meta name="keywords" content="<%= locals.site.keywords %>" />
     <link rel="stylesheet" href="/css/style.css"> 
-        <link rel="stylesheet" href="/css/alert.css">
+     <link rel="stylesheet" href="/css/alert.css">
+    <style>
+.preview-image {
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: contain;
+}
+</style>
 </head>
 <body class="bg-gray-100">
     <div class="container mx-auto py-10 sm:px-6 lg:px-8">
@@ -36,7 +43,7 @@
                             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Remove Background</button>
                         </div>
                         <div class="mb-4">
-                    <img src="" alt="Preview Image" class="max-w-full" id="preview">
+                    <img src="" alt="Preview Image" style="display: none;" class="preview-image" id="preview">
                         </div>
                     </form>
                     <div id="result"></div>
