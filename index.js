@@ -64,6 +64,8 @@ app.post("/api/process/nobg", upload.single('image'), async (req, res) => {
     }
 });
 
+app.use((req, res) => res.status(404).render("404"));
+
 // Start Server
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server Started on Port ' + (process.env.PORT || 3000));
