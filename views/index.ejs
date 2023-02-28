@@ -30,10 +30,13 @@
                         <div class="mb-4">
                             <label for="image" class="block text-gray-700 font-bold mb-2">Upload Image</label>
                             <!-- Form Image File Upload -->
-                            <input type="file" accept="image/jpeg,image/png" name="image" id="image" class="bg-gray-100 border-2 w-full p-4 rounded-lg" required>
+                            <input type="file" accept="image/jpeg,image/png" name="image" id="image" class="bg-gray-100 border-2 w-full p-4 rounded-lg" onchange="showPreview(this)" required>
                         </div>
                         <div class="mb-4">
                             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Remove Background</button>
+                        </div>
+                        <div class="mb-4">
+                    <img src="" alt="Preview Image" class="max-w-full" id="preview*>
                         </div>
                     </form>
                     <div id="result"></div>
@@ -49,5 +52,24 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/process.js"></script>
+    <script>
+    function showPreview(input) {
+  var preview = document.getElementById('preview');
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      preview.setAttribute('src', e.target.result);
+      preview.style.display = 'block'; 
+    }
+    
+    reader.readAsDataURL(input.files[0]);
+  } else {
+    preview.setAttribute('src', '');
+    preview.style.display = 'none'; 
+  }
+}
+
+    </script>
 </body>
 </html>
