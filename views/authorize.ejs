@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Please Authorized before continue</title>
+  <!-- Tambahkan link CDN Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #FFDAB9, #FFEFD5, #7FFFD4, #A2FFF2, #F0FFFF, #E6E6FA, #D8BFD8, #F4A460, #DAA520);
+background-size: 1800% 1800%;
+animation: gradient 40s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="min-h-screen flex items-center justify-center bg-gray-900 bg-opacity-50 backdrop-blur-lg">
+    <div class="max-w-md mx-auto bg-white p-8 rounded-md shadow-md">
+ <h2 class="text-lg font-medium mb-4">Enter the Access Token</h2>
+      <form method="post">
+        <div class="mb-4">
+          <label for="token" class="block text-gray-700 font-medium mb-2">Token:</label>
+          <input type="text" id="token" name="token" class="w-full border-gray-300 border rounded-md px-3 py-2" required>
+                    <% if (locals.error) { %>
+          <p id="error" class="text-red-500 text-sm mt-1"><%= locals.error %></p>
+          <% } %>
+        </div>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md">Akses</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

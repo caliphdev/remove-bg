@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Status</title>
+    <link rel="stylesheet" href="/css/stats.css" />
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+       <h1 class="text-3xl font-bold text-gray-800 text-center mb-8">Server Status</h1>  
+       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+         <div class="bg-white shadow rounded-lg p-8">
+          <div class="text-sm font-medium text-gray-500 mb-4">Visitors</div>
+          <div class="text-4xl font-bold text-gray-900" id="visit">...</div>
+        </div>
+        <div class="bg-white shadow rounded-lg p-8">
+          <div class="text-sm font-medium text-gray-500 mb-4">CPU Usage</div>
+          <div class="text-4xl font-bold text-gray-900" id="cpu">...</div>
+        </div>
+        <div class="bg-white shadow rounded-lg p-8">
+          <div class="text-sm font-medium text-gray-500 mb-4">Memory Usage</div>
+          <div class="text-4xl font-bold text-gray-900" id="memory">...</div>
+        </div>
+        <div class="bg-white shadow rounded-lg p-8">
+          <div class="text-sm font-medium text-gray-500 mb-4">Uptime</div>
+          <div class="text-4xl font-bold text-gray-900" id="uptime">...</div>
+        </div>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+
+      socket.on('ServerStats', dt => {
+        cpu.innerHTML = dt.cpu;
+        memory.innerHTML = dt.memory.rss;
+        uptime.innerHTML = dt.uptime;
+        visit.innerHTML = dt.visit;
+      });
+    </script>
+  </body>
+</html>
