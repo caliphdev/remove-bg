@@ -15,7 +15,7 @@ const {
 const {
   exec
 } = require('child_process');
-const tempFolderPath = path.join(process.cwd(), 'temporary');
+const tempFolderPath = path.join(__dirname, 'temporary');
 const cron = require('node-cron');
 const socketio = require('socket.io');
 const os = require('os');
@@ -34,9 +34,9 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.set('view engine', 'ejs');
-app.use(express.static(path.join(process.cwd(), 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use("/files", express.static(tempFolderPath));
-app.set('views', path.join(process.cwd(), 'views'));
+app.set('views', path.join(__dirname, 'views'));
 
 // Multer ( File Upload )
 const storage = multer.diskStorage({
