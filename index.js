@@ -15,7 +15,7 @@ const {
 const {
   exec
 } = require('child_process');
-const tempFolderPath = path.join(__dirname, 'temporary');
+const tempFolderPath = path.join(process.cwd(), 'temporary');
 const cron = require('node-cron');
 const socketio = require('socket.io');
 const os = require('os');
