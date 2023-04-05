@@ -20,7 +20,7 @@ To install and run this project locally, follow these steps:
 ```bash
 git clone https://github.com/caliphdev/remove-bg
 ```
-2. 2. Navigate to the project directory:
+2. Navigate to the project directory:
 ```bash
 cd remove-bg
 ```
@@ -42,7 +42,7 @@ To deploy this website to your own Replit account, follow these steps:
 2. Create a new Replit project and link it to your forked repository.
 3. Click the "Deploy to Replit" button below to deploy the project.
 
-[![Deploy to Replit](https://replit.com/badge/github/caliphdev/remove-bg)](https://replit.com/github/caliphdev/remove-bgexample/example-repo)
+[![Deploy to Replit](https://replit.com/badge/github/caliphdev/remove-bg)](https://replit.com/github/caliphdev/remove-bg)
 
 ## Dependencies
 
